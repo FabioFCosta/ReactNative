@@ -19,12 +19,12 @@ const BottomTabNavigator = () => {
     }}>
       <TabNavigation.Screen
         name='HomeTabScreen'
-        options={{ tabBarShowLabel:false, tabBarIcon:({})=>(<Icon name="home" color="#000" type="font-awesome" size={24} />)}}
+        options={{ tabBarShowLabel:false, tabBarIcon:({color,size})=>(<Icon name="home" color="#000" type="font-awesome" size={24} />)}}
         component={Home}  
          />
       <TabNavigation.Screen
         name='CategoriasTabScreen'
-        options={{ tabBarShowLabel:false, tabBarIcon:({})=>(<Icon name="search" color="#000" type="font-awesome" size={24} />)}}
+        options={{ tabBarShowLabel:false, tabBarIcon:({color,size})=>(<Icon name="search" color="#000" type="font-awesome" size={24} />)}}
         component={Categorias} 
         />
     </TabNavigation.Navigator>
@@ -36,7 +36,7 @@ const NavigationDrawer = () => {
     <DrawerNavigation.Navigator>
       <DrawerNavigation.Screen
         name="TabNavigationScreen"
-        options={{ title: 'Delivery' }}
+        options={{ title: 'Home' }}
         component={BottomTabNavigator} />
       <DrawerNavigation.Screen
         name="CategoriasDrawerScreen"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { ScrollView, View, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import AxiosInstance from "../../api/AxiosInstance";
 
 import { ProdutoType } from "../../models/ProdutoType";
@@ -25,7 +25,6 @@ const ScrollProdutos = () => {
       '/produto',
       { headers: { "Authorization": `Bearer ${usuario.token}` } }
     ).then(result => {
-      console.log('Dados dos produtos: ' + JSON.stringify(result.data));
       setProduto(result.data);
     }).catch((error) => {
       console.log("Erro ao carregar a lista de produtos - " + JSON.stringify(error));
@@ -36,37 +35,21 @@ const ScrollProdutos = () => {
   return (
     <>
       <TitulosHome titulo="Recentes" />
-      <FlatList
-        horizontal={true}
-        data={produto}
-        keyExtractor={item => item.idProduto}
-        renderItem={({ item }) =>
-          <TouchableOpacity
-            onPress={() => console.log(`O produto ${item.nomeProduto} foi clicado`)}
-          >
-            {loginPending ? <AppLoader /> : null}
-            <CardProdutos produto={item} />
-          </TouchableOpacity>
-        }
-      />
+      {loginPending ? <AppLoader /> :
+        <FlatList
+          horizontal={true}
+          data={produto}
+          keyExtractor={item => item.idProduto}
+          renderItem={response =>
+            <>
+              <CardProdutos
+                produto={response.item}
+              />
+            </>
+          }
+        />
+      }
     </>
-
-    // <View>
-    //   <TitulosHome titulo="Recentes"/>
-    //   <ScrollView horizontal={true}>
-    //   {
-    //     produto.map((k, i) => (
-    //       <TouchableOpacity key={i}
-    //         onPress={() => console.log(`O produto ${k.nomeProduto} foi clicado`)}
-    //         style={styles.card_produto}
-    //       >
-    //         {loginPending ? <AppLoader /> : null}
-    //         <CardRecentes produto={k} />
-    //       </TouchableOpacity>
-    //     ))
-    //   }
-    //   </ScrollView>
-    // </View>
   )
 }
 

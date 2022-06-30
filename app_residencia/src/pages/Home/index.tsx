@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, ScrollView } from "react-native";
 
 import ScrollCategorias from "../../components/Categorias/ScrollCategorias";
@@ -11,12 +11,13 @@ const Home = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <SearchBar />
-      <ScrollCategorias />
+      <ScrollCategorias navigation={navigation}/>
       <ScrollProdutos />
       <Destaque nome="Título 1" desc="Descrição 1" />
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

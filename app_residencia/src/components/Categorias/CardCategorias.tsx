@@ -1,23 +1,32 @@
 import React from "react";
 import { Text } from "react-native-elements";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 
-const CardCategoria = ({categoria}) => {
+const CardCategoria = (props) => {
+
+  const handleClick = (categoria) => {
+    console.log(`A categoria ${categoria.nomeCategoria} foi clicada`)
+  }
+  
   return (
+    <TouchableOpacity
+      onPress={() => handleClick(props.categoria)}
+    >
       <View style={styles.view_itens_categoria}>
-        <Text style={styles.texto_nome_categoria}>{categoria.nomeCategoria}</Text>
+        <Text style={styles.texto_nome_categoria}>{props.categoria.nomeCategoria}</Text>
       </View>
+    </TouchableOpacity>
   )
 }
 const styles = StyleSheet.create({
   view_itens_categoria: {
-    width: 120,
-    height: 120,
-    marginRight:10,
+    width: 100,
+    height: 100,
+    marginRight: 10,
     backgroundColor: '#333',
     alignContent: 'center',
     justifyContent: 'center',
-    
+
   },
   texto_nome_categoria: {
     color: '#fff',
