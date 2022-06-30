@@ -6,11 +6,11 @@ import { ProdutoType } from "../../models/ProdutoType";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
 import { LoginContext } from "../../context/LoginContext";
 
-import CardRecentes from "./CardRecentes";
+import CardProdutos from "./CardProdutos";
 import TitulosHome from "../Home/Titulos";
 import { AppLoader } from "../AppLoader";
 
-const ScrollRecentes = () => {
+const ScrollProdutos = () => {
   const { usuario } = useContext(AutenticacaoContext);
   const [produto, setProduto] = useState<ProdutoType[]>([]);
   const { loginPending, setLoginPending } = useContext(LoginContext);
@@ -45,7 +45,7 @@ const ScrollRecentes = () => {
             onPress={() => console.log(`O produto ${item.nomeProduto} foi clicado`)}
           >
             {loginPending ? <AppLoader /> : null}
-            <CardRecentes produto={item} />
+            <CardProdutos produto={item} />
           </TouchableOpacity>
         }
       />
@@ -70,4 +70,4 @@ const ScrollRecentes = () => {
   )
 }
 
-export default ScrollRecentes;
+export default ScrollProdutos;

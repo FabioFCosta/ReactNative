@@ -2,11 +2,12 @@ import React from "react";
 import { Card, Text } from "react-native-elements";
 import { StyleSheet} from "react-native";
 
-const CardRecentes = ({produto}) => {
+const CardProdutos = ({produto}) => {
+  console.log(produto.imagemProduto)
   return (
     <Card containerStyle={styles.card_container} >
       <Card.Image 
-      source={require('../../assets/1.jpg')}
+      source={{uri:produto.imagemProduto}}
       style={styles.card_image}
        />
       <Card.Divider/>     
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
   card_image: {
     width:150,
-    height:150,
+    height:120,
     borderTopLeftRadius:10,
     borderTopRightRadius:10,
   },
@@ -39,4 +40,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CardRecentes;
+export default CardProdutos;

@@ -8,7 +8,8 @@ export const SearchBar = () => {
     <Input
       placeholder="ex.:Produto x"
       leftIcon={<Icon name="search" color="#00000080" type="font-awesome" size={24} />}
-      rightIcon={<Icon name="sliders" color="#00000080" type="font-awesome" size={24} />} autoCompleteType={undefined}
+      rightIcon={<Icon name="sliders" color="#00000080" type="font-awesome" size={24} />} autoCorrect={false}
+      autoComplete='off'
       inputContainerStyle={styles.input_container}
     />
   )

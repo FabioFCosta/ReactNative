@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 
 import ScrollCategorias from "../../components/Categorias/ScrollCategorias";
-import ScrollRecentes from "../../components/Recentes/ScrollRecentes";
+import ScrollProdutos from "../../components/Produtos/ScrollProdutos";
 import { SearchBar } from "../../components/Search";
 import { Destaque } from "../../components/Destaque";
 
@@ -12,7 +12,7 @@ const Home = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <SearchBar />
       <ScrollCategorias />
-      <ScrollRecentes />
+      <ScrollProdutos />
       <Destaque nome="Título 1" desc="Descrição 1" />
     </ScrollView>
   );
