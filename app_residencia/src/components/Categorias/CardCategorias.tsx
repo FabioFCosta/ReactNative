@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     alignContent: 'center',
     justifyContent: 'center',
+    
   },
   texto_nome_categoria: {
     color: '#fff',
