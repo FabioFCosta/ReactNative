@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Icon } from "react-native-elements";
+import { Icon, Badge, withBadge } from "react-native-elements";
 import Produto from "../pages/Produto";
+import Carrinho from "../pages/Carrinhos";
+import { CarrinhoContext } from "../context/CarrinhoContext";
 
 import Login from "../pages/Login";
 import Home from "../pages/Home";
@@ -12,22 +14,31 @@ import Categorias from "../pages/Categorias";
 
 const TabNavigation = createBottomTabNavigator();
 const BottomTabNavigator = () => {
+  
+  const { contarQtdProdutos } = useContext(CarrinhoContext);
+  const BadgeIcon = withBadge(contarQtdProdutos())(Icon);
+
   return (
     <TabNavigation.Navigator screenOptions={{
-      tabBarHideOnKeyboard:true,
+      tabBarHideOnKeyboard: true,
       headerShown: false,
       tabBarStyle: { backgroundColor: '#7054B6', borderBottomWidth: 0, },
     }}>
       <TabNavigation.Screen
         name='HomeTabScreen'
-        options={{ tabBarShowLabel:false, tabBarIcon:({color,size})=>(<Icon name="home" color="#000" type="font-awesome" size={24} />)}}
-        component={Home}  
-         />
+        options={{ tabBarShowLabel: false, tabBarIcon: ({ color, size }) => (<Icon name="home" color="#000" type="font-awesome" size={24} />) }}
+        component={Home}
+      />
       <TabNavigation.Screen
         name='CategoriasTabScreen'
-        options={{ tabBarShowLabel:false, tabBarIcon:({color,size})=>(<Icon name="search" color="#000" type="font-awesome" size={24} />)}}
-        component={Categorias} 
-        />
+        options={{ tabBarShowLabel: false, tabBarIcon: ({ color, size }) => (<Icon name="search" color="#000" type="font-awesome" size={24} />) }}
+        component={Categorias}
+      />
+      <TabNavigation.Screen
+        name='CarrinhoScreen'
+        options={{ tabBarShowLabel: false, tabBarIcon: ({ color, size }) => (<BadgeIcon name="shopping-basket" color="#000" type="font-awesome" size={24} />) }}
+        component={Carrinho}
+      />
     </TabNavigation.Navigator>
   );
 }
