@@ -6,7 +6,7 @@ import { Icon } from "react-native-elements";
 
 const Carrinho = () => {
 
-  const { listarProdutos } = useContext(CarrinhoContext);
+  const { listarProdutos, deletarProduto } = useContext(CarrinhoContext);
   const [carrinho, setCarrinho] = useState();
 
   useEffect(() => {
@@ -16,7 +16,9 @@ const Carrinho = () => {
   const getDadosCarrinho = () => {
     setCarrinho(listarProdutos());
   }
-
+  const deleteProdutoCarrinho=(item)=>{
+    deletarProduto(item)
+  }
   return (
     <FlatList
       data={carrinho}
@@ -29,7 +31,7 @@ const Carrinho = () => {
             <Text>{item.nome_produto}</Text>
             <Text>{item.descricao_produto}</Text>
             <Text>{item.preco_produto}</Text>
-            <TouchableOpacity onPress={() => console.log(`Deletar o produto de id ${item.id_produto}`)}>
+            <TouchableOpacity onPress={() => deleteProdutoCarrinho(item)}>
               <Icon name="trash" color="#333" type="font-awesome" size={36} />
             </TouchableOpacity>
           </View>
