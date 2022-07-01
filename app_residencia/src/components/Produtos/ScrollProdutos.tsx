@@ -10,7 +10,7 @@ import CardProdutos from "./CardProdutos";
 import TitulosHome from "../Home/Titulos";
 import { AppLoader } from "../AppLoader";
 
-const ScrollProdutos = () => {
+const ScrollProdutos = ({navigation}) => {
   const { usuario } = useContext(AutenticacaoContext);
   const [produto, setProduto] = useState<ProdutoType[]>([]);
   const { loginPending, setLoginPending } = useContext(LoginContext);
@@ -44,6 +44,7 @@ const ScrollProdutos = () => {
             <>
               <CardProdutos
                 produto={response.item}
+                navigation={navigation}
               />
             </>
           }

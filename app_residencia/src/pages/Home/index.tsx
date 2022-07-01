@@ -12,7 +12,7 @@ const Home = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <SearchBar />
       <ScrollCategorias navigation={navigation}/>
-      <ScrollProdutos />
+      <ScrollProdutos navigation={navigation}/>
       <Destaque nome="Título 1" desc="Descrição 1" />
     </ScrollView>
   );

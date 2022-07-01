@@ -7,26 +7,12 @@ import { CategoriaType } from "../../models/CategoriaType";
 
 import AxiosInstance from "../../api/AxiosInstance";
 import { AutenticacaoContext } from "../../context/AutenticacaoContext";
+import { CategoriaContext } from "../../context/CategoriaContext";
 
 const Categorias = () => {
 
-  useEffect(() => {
-    getDadosCategoria();
-  }, []);
-
-  const [categoria, setCategoria] = useState<CategoriaType[]>([]);
-  const { usuario } = useContext(AutenticacaoContext);
-
-  const getDadosCategoria = async () => {
-    AxiosInstance.get(
-      '/categoria',
-      { headers: { "Authorization": `Bearer ${usuario.token}` } }
-    ).then(result => {
-      setCategoria(result.data);
-    }).catch((error) => {
-      console.log("Erro ao carregar a lista de categorias - " + JSON.stringify(error));
-    })
-  }
+  const {categoria, setCategoria} = useContext(CategoriaContext);
+  
   return (
     <View style={styles.container}>
       <SearchBar />

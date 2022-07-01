@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Icon } from "react-native-elements";
+import Produto from "../pages/Produto";
 
 import Login from "../pages/Login";
 import Home from "../pages/Home";
@@ -61,6 +62,10 @@ const Routes = () => {
         <StackNavigation.Screen
           name='HomeScreen'
           component={NavigationDrawer}
+        />
+        <StackNavigation.Screen
+          name='ProdutoScreen'
+          component={Produto}
         />
       </StackNavigation.Navigator>
     </NavigationContainer>
